@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+
+  db-stafyra-seasons:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=postgres
+    volumes:
+      - ./init-gunmarketx.sql:/docker-entrypoint-initdb.d/init-gunmarketx.sql
+    ports:
+      - 35432:5432
