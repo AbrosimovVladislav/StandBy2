@@ -1,0 +1,32 @@
+html {
+  height: 100%;
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 360px;
+
+.root {
+  min-height: 100vh;
+.content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+.main {
+  flex: 1 1 auto;
+}
+}
+}
+}
+}
+
+.container-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 70vh;
+}
+

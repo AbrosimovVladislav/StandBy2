@@ -1,0 +1,14 @@
+@import "src/variables/variables.scss";
+
+header {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  line-height: 19px;
+  font-family: $main-font;
+  background: $topbar-background;
+  color: $text-color;
+  margin-bottom: 30px;
+
+}

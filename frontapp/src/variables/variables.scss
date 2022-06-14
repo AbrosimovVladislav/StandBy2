@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+//-------------
+//Functions
+//-------------
+@function breakpoint($name) {
+  @return map_get($breakpoints, $name);
+}
+
+//-------------
+//Fonts
+//-------------
+$main-font: "Roboto", "sans-serif";
+$font-size-huge: 32px;
+$font-size-big: 24px;
+$font-size-md-big: 20px;
+$font-size-middle: 16px;
+$font-size-small: 14px;
+
+//-------------
+//Colors
+//-------------
+$available-product-marker-color:#28a745;
+$button-svg-color:#cccccc;
+$ul-text-color:#6c7782;
+$main-color: #ffd333;
+$second-color: #3d464d;
+$text-color: $second-color;
+$light-text-color: #b3b3b3;
+$light-color: #ededed;
+$button-text-hover-color: $light-color;
+$inactive: #a1abb3;
+$button-border:#e8e8e8;
+$border-color: #f0f0f0;
+
+//-------------
+//Breakpoints
+//-------------
+$breakpoints: (
+        xs-start: 0px,
+        xs-end:   575px,
+        sm-start: 576px,
+        sm-end:   767px,
+        md-start: 768px,
+        md-end:   991px,
+        lg-start: 992px,
+        lg-end:   1199px,
+        xl-start: 1200px
+);
+
+// -------------
+// Rating
+// -------------
+$rating-legend-font-color: #b3b3b3 !default;
+$rating-star-default-color: #ccc !default;
+$rating-star-default-stroke-color: rgba(#000, .08) !default;
+$rating-star-active-color: #ffd333 !default;
+$rating-star-active-stroke-color: $rating-star-default-stroke-color !default;
+
+// --------------
+// Topbar
+// --------------
+$topbar-height: 32px !default;
+$topbar-background: #f7f7f7 !default;
+$topbar-shadow: none !default;
+$topbar-border-bottom: none !default;
+$topbar-font-color: #737373 !default;
+
+// ----------------------------------------
+// NavPanel, MobileHeader
+// ----------------------------------------
+$nav-panel-bg: $main-color !default;
+$nav-panel-shadow: 0 1px rgba(#000, .04), inset 0 -1px rgba(#000, .04) !default;
+$nav-panel-stuck-shadow: 0 1px rgba(#000, .04), inset 0 -1px rgba(#000, .04), 0 1px 20px rgba(#000, .15) !default;
+$nav-panel-font-color: $second-color !default;
+$nav-panel-logo-color: $nav-panel-font-color !default;
+$nav-panel-height: 54px !default;
+$nav-panel-padding: 6px !default;
+
+
+// --------------
+// Backdrop
+// --------------
+$backdrop-bg: #3d464d;
+
+
+
+// --------------
+// Footer
+// --------------
+$footer-height: 32px !default;
+$footer-bg: #f7f7f7 !default;
+$footer-shadow: none !default;
+$footer-border-bottom: none !default;
+$footer-font-color: #737373 !default;

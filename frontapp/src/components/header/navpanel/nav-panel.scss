@@ -1,0 +1,48 @@
+@import "src/variables/variables";
+
+.nav-panel {
+  padding: $nav-panel-padding;
+  height: $nav-panel-height;
+  background-color: $main_color;
+  display: flex;
+  align-items: center;
+
+  .nav-panel__components {
+    color: $nav-panel-font-color;
+    display: flex;
+    align-items: center;
+  }
+
+  .indicators {
+    padding: 0;
+    display: flex;
+    width: 30%;
+    flex: 1 0 0;
+    justify-content: end;
+    align-items: center;
+    height: 40px;
+    z-index: 1000;
+
+    svg {
+      width: 40px;
+      height: 40px;
+      padding: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background: hsla(0, 0%, 100%, .5);
+        transition-duration: .1s;
+      }
+    }
+
+    @media (max-width: breakpoint(xs-end)) {
+      margin-right: 0;
+    }
+
+  }
+}
+
+.Toastify__toast {
+  min-height: 80px;
+  --toastify-color-progress-light: linear gradient(to right, $main-color);
+}

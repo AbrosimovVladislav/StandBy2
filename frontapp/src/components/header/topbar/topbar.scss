@@ -1,0 +1,68 @@
+@import "src/variables/variables";
+
+.topbar {
+  height: $topbar-height;
+  background: $topbar-background;
+  box-shadow: $topbar-shadow;
+  border-bottom: $topbar-border-bottom;
+  font-size: $font-size-small;
+  line-height: 14px;
+
+  position: relative;
+  z-index: 20;
+
+  display: flex;
+  flex-direction: row;
+
+
+
+  .topbar__content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .topbar__links {
+    display: flex;
+    justify-content: left;
+    width: 50%;
+    align-items: center;
+
+    a {
+      text-decoration: none;
+      color: $topbar-font-color;
+      margin-right: 20px;
+
+      &:hover {
+        color: initial;
+      }
+    }
+  }
+
+
+
+  @media (max-width: breakpoint(md-end)) {
+    display: none;
+  }
+
+  .topbar__location {
+    display: flex;
+    width: fit-content;
+    justify-content: end;
+    align-items: center;
+    padding-left: 10px;
+    color: $topbar-font-color;
+    cursor: pointer;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      padding: 7px;
+    }
+
+    &:hover {
+      background: $light-color;
+      color: initial;
+    }
+  }
+}
