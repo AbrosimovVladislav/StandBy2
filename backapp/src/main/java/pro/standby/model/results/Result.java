@@ -1,4 +1,4 @@
-package pro.standby.model;
+package pro.standby.model.results;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
@@ -12,6 +12,7 @@ import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import pro.standby.model.Competition;
 
 @Getter
 @Setter

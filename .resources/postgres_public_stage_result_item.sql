@@ -1,0 +1,15 @@
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (1, 1, 100, 1, 100, 'First Stage', 1);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (5, 2, 90, 2, 90, 'Second Stage', 2);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (9, 3, 80, 3, 80, 'Third Stage', 3);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (2, 1, 100, 1, 100, 'Second Stage', 2);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (13, 5, 60, 5, 60, 'First Stage', 1);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (15, 5, 60, 5, 60, 'Third Stage', 3);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (4, 2, 90, 2, 90, 'First Stage', 1);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (6, 2, 90, 2, 90, 'Third Stage', 3);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (3, 1, 100, 1, 100, 'Third Stage', 3);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (12, 4, 70, 4, 70, 'Third Stage', 3);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (14, 5, 60, 5, 60, 'Second Stage', 2);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (11, 4, 70, 4, 70, 'Second Stage', 2);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (7, 3, 80, 3, 80, 'First Stage', 1);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (8, 3, 80, 3, 80, 'Second Stage', 2);
+INSERT INTO public.stage_result_item (stage_result_item_id, stage_result_id, percentage, place, points, stage_name, stage_number) VALUES (10, 4, 70, 4, 70, 'First Stage', 1);

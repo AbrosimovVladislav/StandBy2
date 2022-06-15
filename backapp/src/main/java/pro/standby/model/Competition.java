@@ -18,6 +18,7 @@ import javax.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
+import pro.standby.model.results.Result;
 
 @Getter
 @Setter
