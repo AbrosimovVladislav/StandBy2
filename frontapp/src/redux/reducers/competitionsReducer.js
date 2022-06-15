@@ -1,4 +1,4 @@
-import {PUT_COMPETITIONS} from "../actions";
+import {PUT_COMPETITIONS, PUT_CURRENT_COMPETITION} from "../actions";
 
 const initialState = {
   competitions: [
@@ -104,6 +104,9 @@ export default function competitionsReducer(state = initialState, action) {
     case PUT_COMPETITIONS :
       const competitions = action.payload;
       return {...state, competitions: competitions};
+    case PUT_CURRENT_COMPETITION :
+      const currentCompetition = action.payload;
+      return {...state, currentCompetition: currentCompetition};
     default :
       return state;
   }

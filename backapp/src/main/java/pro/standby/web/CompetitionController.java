@@ -4,8 +4,10 @@ import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import pro.standby.model.Competition;
 import pro.standby.service.CompetitionService;
@@ -26,6 +28,17 @@ public class CompetitionController {
     List<Competition> competitions = competitionService.getAll();
     log.info("GET all competitions");
     return competitions;
+  }
+
+  @ApiOperation(value = "Get competition by id",
+      notes = "Get competition by id",
+      response = Competition.class)
+  @CrossOrigin
+  @GetMapping(value = "/competition/{competitionId}", produces = MediaType.APPLICATION_JSON_VALUE)
+  private Competition getById(@PathVariable Long competitionId) {
+    Competition competition = competitionService.getById(competitionId);
+    log.info("GET competition by id: " + competitionId);
+    return competition;
   }
 
 }
