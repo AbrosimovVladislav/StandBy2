@@ -10,19 +10,21 @@ export default function Competitions() {
 
   useEffect(() => {
     dispatch(fetchCompetitions());
+    console.log(competitions)
   }, [])
 
   return (
       <div>
         Competitions
         {competitions?.map(competition => {
-          return <div>
-            <a href={localUIUrl + "/competition/" + competition.id}><h1>Name: {competition.name}</h1></a>
-            <p>Date: {competition.date}</p>
+          return <div key={competition.competitionId}>
+            <a href={localUIUrl + "/competition/" + competition.competitionId}><h1>Name: {competition.name}</h1></a>
+            <p>Date: {competition.startDate}</p>
+            <p>Date: {competition.endDate}</p>
             <p>Level: {competition.level}</p>
             <p>Type: {competition.type}</p>
-            <p>Place: {competition.place}</p>
-            <p>Organizer: {competition.organizer}</p>
+            <p>Place: {competition.place.name}</p>
+            <p>Organizer: {competition.organizer.name}</p>
           </div>
         })}
       </div>

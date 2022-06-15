@@ -1,3 +1,5 @@
+import {PUT_COMPETITIONS} from "../actions";
+
 const initialState = {
   competitions: [
     {
@@ -61,9 +63,9 @@ const initialState = {
     organizer: 'Nevsky',
     description: '',
     results: {
-      overall:[
+      overall: [
         {
-          place:'1',
+          place: '1',
           percentage: '100%',
           points: '1234',
           competitor: 'Ivan Ivanov',
@@ -73,7 +75,7 @@ const initialState = {
           region: 'RUS'
         },
         {
-          place:'2',
+          place: '2',
           percentage: '90%',
           points: '1134',
           competitor: 'Petr Ivanov',
@@ -83,7 +85,7 @@ const initialState = {
           region: 'RUS'
         },
         {
-          place:'3',
+          place: '3',
           percentage: '80%',
           points: '1034',
           competitor: 'Vasiliy Ivanov',
@@ -99,6 +101,9 @@ const initialState = {
 
 export default function competitionsReducer(state = initialState, action) {
   switch (action.type) {
+    case PUT_COMPETITIONS :
+      const competitions = action.payload;
+      return {...state, competitions: competitions};
     default :
       return state;
   }
