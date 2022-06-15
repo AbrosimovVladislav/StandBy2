@@ -1,0 +1,1 @@
+INSERT INTO public.competition (competition_id, description, end_date, level, name, price, squad_count, squad_size, start_date, type, person_id, organizer_id, place_id, result_id) VALUES (1, 'First championship', '2022-06-16 09:24:21.000000', 'IPSC_LEVEL_III', 'First championship', 8000, 3, 5, '2022-06-15 09:24:18.000000', 'PCC', 1, 1, 1, 1);

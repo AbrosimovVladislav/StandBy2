@@ -26,7 +26,7 @@ export default function CompetitionDetails() {
           <p>Place: {currentCompetition.place.name}</p>
           <p>Organizer: {currentCompetition.organizer.name}</p>
         </div>
-        <ResultTab overall={currentCompetition.results && currentCompetition.results.overall}/>
+        <ResultTab result={currentCompetition.result}/>
       </div>
   )
 }

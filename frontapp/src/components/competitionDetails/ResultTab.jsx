@@ -1,21 +1,21 @@
 import React from "react";
 
-export default function ResultTab({overall}) {
+export default function ResultTab({result}) {
 
-  if(overall){
+  if (result && result.resultItems) {
     return <div>
       <h2>Results: </h2>
       <p>-------------------------------</p>
-      {overall && overall.map(result => {
-        return <div key={result.place}>
-          <p>Place: {result.place}</p>
-          <p>Percentage: {result.percentage}</p>
-          <p>Points: {result.points}</p>
-          <p>Competitor: {result.competitor}</p>
-          <p>Rank: {result.competitorsRank}</p>
-          <p>Type: {result.type}</p>
-          <p>Class: {result.class}</p>
-          <p>Region: {result.region}</p>
+      {result.resultItems && result.resultItems.map(resultItem => {
+        return <div key={resultItem.place}>
+          <p>Place: {resultItem.place}</p>
+          <p>Percentage: {resultItem.percentage}</p>
+          <p>Points: {resultItem.points}</p>
+          <p>Competitor: {resultItem.competitor.person.firstName} {resultItem.competitor.person.lastName}</p>
+          <p>Rank: {resultItem.competitor.person.rank}</p>
+          <p>Type: {resultItem.competitor.gunType}</p>
+          <p>Class: {resultItem.competitor.gunClass}</p>
+          <p>Region: {resultItem.competitor.person.region}</p>
           <p>_____________________________</p>
         </div>
       })}

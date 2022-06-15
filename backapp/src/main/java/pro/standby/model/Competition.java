@@ -55,6 +55,10 @@ public class Competition {
   @JoinColumn(name = "person_id")
   private Person matchDirector;
 
+  @OneToOne
+  @JoinColumn(name = "result_id")
+  private Result result;
+
   @Column(length = 2500)
   private String description;
 

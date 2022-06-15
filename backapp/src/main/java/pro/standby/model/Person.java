@@ -1,6 +1,8 @@
 package pro.standby.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,5 +23,17 @@ public class Person {
   private String firstName;
   private String lastName;
 
+  @Enumerated(EnumType.STRING)
+  private Region region;
 
+  @Enumerated(EnumType.STRING)
+  private Rank rank;
+
+  public enum Rank {
+    MASTER, AMATEUR
+  }
+
+  public enum Region {
+    SRB, RUS
+  }
 }
