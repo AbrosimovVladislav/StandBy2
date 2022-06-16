@@ -1,4 +1,4 @@
-package pro.standby.model2;
+package pro.standby.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

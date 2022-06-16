@@ -1,9 +1,8 @@
-package pro.standby.model2.dto;
+package pro.standby.model.dto;
 
-import java.util.Date;
 import lombok.Data;
-import pro.standby.model2.GunType;
-import pro.standby.model2.Level;
+import pro.standby.model.GunType;
+import pro.standby.model.Level;
 
 @Data
 public class CompetitionDto {

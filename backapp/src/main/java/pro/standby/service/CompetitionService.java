@@ -4,7 +4,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import pro.standby.model2.Competition;
+import pro.standby.model.Competition;
 import pro.standby.repo.CompetitionRepository;
 
 @Slf4j

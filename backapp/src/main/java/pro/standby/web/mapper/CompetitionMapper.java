@@ -3,8 +3,8 @@ package pro.standby.web.mapper;
 import java.util.Date;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import pro.standby.model2.Competition;
-import pro.standby.model2.dto.CompetitionDto;
+import pro.standby.model.Competition;
+import pro.standby.model.dto.CompetitionDto;
 import pro.standby.service.PersonService;
 import pro.standby.service.RefereeService;
 

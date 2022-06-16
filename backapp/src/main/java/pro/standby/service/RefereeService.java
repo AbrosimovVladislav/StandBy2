@@ -4,7 +4,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import pro.standby.model2.Referee;
+import pro.standby.model.Referee;
 import pro.standby.repo.RefereeRepository;
 
 @Slf4j

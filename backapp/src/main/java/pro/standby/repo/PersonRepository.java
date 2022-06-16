@@ -2,7 +2,7 @@ package pro.standby.repo;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
-import pro.standby.model2.Person;
+import pro.standby.model.Person;
 
 public interface PersonRepository extends JpaRepository<Person, Long> {
 

@@ -1,11 +1,10 @@
-package pro.standby.model2;
+package pro.standby.model;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter

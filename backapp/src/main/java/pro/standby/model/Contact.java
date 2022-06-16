@@ -1,4 +1,4 @@
-package pro.standby.model2;
+package pro.standby.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;

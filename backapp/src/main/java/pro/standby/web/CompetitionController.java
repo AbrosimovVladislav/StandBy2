@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pro.standby.model2.Competition;
-import pro.standby.model2.dto.CompetitionDto;
+import pro.standby.model.Competition;
+import pro.standby.model.dto.CompetitionDto;
 import pro.standby.service.CompetitionService;
 import pro.standby.web.mapper.CompetitionMapper;
 

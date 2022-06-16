@@ -7,7 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pro.standby.model2.Person;
+import pro.standby.model.Person;
 import pro.standby.service.PersonService;
 
 @Slf4j
