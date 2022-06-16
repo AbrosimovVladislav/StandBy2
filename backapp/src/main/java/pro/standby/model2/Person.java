@@ -1,18 +1,15 @@
-package pro.standby.model;
+package pro.standby.model2;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import javax.persistence.*;
+import java.util.List;
+
 @Getter
 @Setter
-//@Entity
+@Entity
 @Accessors(chain = true)
 public class Person {
 
@@ -22,6 +19,9 @@ public class Person {
 
   private String firstName;
   private String lastName;
+
+  @OneToMany(mappedBy = "person")
+  private List<Contact> contacts;
 
   @Enumerated(EnumType.STRING)
   private Region region;

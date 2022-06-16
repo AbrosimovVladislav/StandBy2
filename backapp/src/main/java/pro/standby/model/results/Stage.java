@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 
 @Getter
 @Setter
-@Entity
+//@Entity
 @Accessors(chain = true)
 public class Stage {
 

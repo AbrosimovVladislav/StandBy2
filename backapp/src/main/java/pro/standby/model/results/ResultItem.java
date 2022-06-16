@@ -17,7 +17,7 @@ import pro.standby.model.Competitor;
 
 @Getter
 @Setter
-@Entity
+//@Entity
 @Accessors(chain = true)
 public class ResultItem {
 

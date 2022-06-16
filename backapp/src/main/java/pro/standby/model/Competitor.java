@@ -17,7 +17,7 @@ import pro.standby.model.Competition.GunType;
 
 @Getter
 @Setter
-@Entity
+//@Entity
 @Accessors(chain = true)
 public class Competitor {
 
