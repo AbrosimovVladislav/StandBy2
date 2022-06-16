@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pro.standby.model.Competition;
 import pro.standby.model.dto.CompetitionDto;
+import pro.standby.model.dto.result.CompetitionDetails;
 import pro.standby.service.CompetitionService;
 import pro.standby.web.mapper.CompetitionMapper;
 
@@ -27,10 +28,12 @@ public class CompetitionController {
       response = List.class)
   @CrossOrigin
   @GetMapping(value = "/competition")
-  public List<Competition> getAll() {
+  public List<CompetitionDetails> getAll() {
     log.info("GET request: CompetitionController: getAll");
     List<Competition> competitions = competitionService.getAll();
-    return competitions;
+    List<CompetitionDetails> competitionDetailsList =
+        competitionMapper.competitions2DetailsList(competitions);
+    return competitionDetailsList;
   }
 
   @ApiOperation(value = "Create new competition",

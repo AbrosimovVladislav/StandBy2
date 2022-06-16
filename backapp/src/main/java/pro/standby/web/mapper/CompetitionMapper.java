@@ -1,12 +1,15 @@
 package pro.standby.web.mapper;
 
 import java.util.Date;
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import pro.standby.model.Competition;
 import pro.standby.model.dto.CompetitionDto;
+import pro.standby.model.dto.result.CompetitionDetails;
 import pro.standby.service.PersonService;
 import pro.standby.service.RefereeService;
+import pro.standby.service.resultCalculator.ResultCalculator;
 
 @Component
 @RequiredArgsConstructor
@@ -14,6 +17,7 @@ public class CompetitionMapper {
 
   private final PersonService personService;
   private final RefereeService refereeService;
+  private final ResultCalculator resultCalculator;
 
   public Competition dto2competition(CompetitionDto competitionDto) {
     String refFirstName = competitionDto.getReferee().split(" ")[0];
@@ -47,4 +51,18 @@ public class CompetitionMapper {
     );
   }
 
+  public List<CompetitionDetails> competitions2DetailsList(List<Competition> competitions) {
+    return competitions.stream()
+        .map(this::competition2Details)
+        .toList();
+  }
+
+  public CompetitionDetails competition2Details(Competition competition) {
+    return CompetitionDetails.builder()
+        .competition(competition)
+        .overallResults(resultCalculator.calculateOverallResults(competition))
+        .competitorViewResults(null)
+        .stageViewResults(null)
+        .build();
+  }
 }

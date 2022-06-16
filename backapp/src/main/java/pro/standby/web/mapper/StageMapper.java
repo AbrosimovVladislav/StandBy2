@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import pro.standby.model.Stage;
 import pro.standby.model.dto.StageDto;
 import pro.standby.service.CompetitionService;
-import pro.standby.service.PointCalculator;
+import pro.standby.service.pointCalculator.PointCalculator;
 
 @Slf4j
 @Component
@@ -17,7 +17,7 @@ public class StageMapper {
   private final PointCalculator pointCalculator;
 
   public Stage dto2Stage(StageDto dto) {
-    var shotsAndPoints = pointCalculator.calculate(
+    var shotsAndPoints = pointCalculator.calculateMaximumShotsAndPoints(
         dto.getPaperTargetsNumber(),
         dto.getSteelTargetsNumber()
     );

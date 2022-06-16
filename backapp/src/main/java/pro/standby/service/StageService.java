@@ -13,6 +13,12 @@ public class StageService {
 
   private final StageRepository stageRepository;
 
+  public Stage findByName(String name) {
+    return stageRepository.findByName(name).orElseThrow(
+        () -> new RuntimeException("There is no stage with this name: " + name)
+    );
+  }
+
   public Stage save(Stage stage) {
     return stageRepository.save(stage);
   }
