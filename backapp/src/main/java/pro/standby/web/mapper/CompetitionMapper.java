@@ -19,6 +19,46 @@ public class CompetitionMapper {
   private final RefereeService refereeService;
   private final ResultCalculator resultCalculator;
 
+  public List<CompetitionDetails> competitions2DetailsList(List<Competition> competitions) {
+    return competitions.stream()
+        .map(this::competition2Details)
+        .toList();
+  }
+
+  public List<CompetitionDto> competitions2Dtos(List<Competition> competitions) {
+    return competitions.stream()
+        .map(this::competition2Dto)
+        .toList();
+  }
+
+  public CompetitionDto competition2Dto(Competition competition) {
+    return CompetitionDto.builder()
+        .competitionId(competition.getCompetitionId())
+        .name(competition.getName())
+        .startDate(competition.getStartDate().toString())
+        .finishDate(competition.getFinishDate().toString())
+        .place(competition.getPlace())
+        .organizer(competition.getOrganizer())
+        .price(competition.getPrice())
+        .description(competition.getDescription())
+        .level(competition.getLevel())
+        .gunType(competition.getGunType())
+        .referee(competition.getReferee().getPerson().getFirstName() + " "
+            + competition.getReferee().getPerson().getLastName())
+        .matchDirector(competition.getMatchDirector().getFirstName() + " "
+            + competition.getMatchDirector().getFirstName())
+        .build();
+  }
+
+  public CompetitionDetails competition2Details(Competition competition) {
+    return CompetitionDetails.builder()
+        .competition(competition)
+        .overallResults(resultCalculator.calculateOverallResults(competition))
+        .competitorViewResults(null)
+        .stageViewResults(null)
+        .build();
+  }
+
   public Competition dto2competition(CompetitionDto competitionDto) {
     String refFirstName = competitionDto.getReferee().split(" ")[0];
     String refLastName = competitionDto.getReferee().split(" ")[1];
@@ -51,18 +91,4 @@ public class CompetitionMapper {
     );
   }
 
-  public List<CompetitionDetails> competitions2DetailsList(List<Competition> competitions) {
-    return competitions.stream()
-        .map(this::competition2Details)
-        .toList();
-  }
-
-  public CompetitionDetails competition2Details(Competition competition) {
-    return CompetitionDetails.builder()
-        .competition(competition)
-        .overallResults(resultCalculator.calculateOverallResults(competition))
-        .competitorViewResults(null)
-        .stageViewResults(null)
-        .build();
-  }
 }

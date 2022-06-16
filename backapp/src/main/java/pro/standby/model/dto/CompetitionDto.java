@@ -1,12 +1,15 @@
 package pro.standby.model.dto;
 
+import lombok.Builder;
 import lombok.Data;
 import pro.standby.model.GunType;
 import pro.standby.model.Level;
 
 @Data
+@Builder
 public class CompetitionDto {
 
+  private Long competitionId;
   private String name;
   private String startDate;
   private String finishDate;

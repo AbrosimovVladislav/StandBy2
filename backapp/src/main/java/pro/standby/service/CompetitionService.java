@@ -18,6 +18,12 @@ public class CompetitionService {
     return competitionRepository.save(competition);
   }
 
+  public Competition findById(Long competitionId) {
+    return competitionRepository.findById(competitionId).orElseThrow(
+        () -> new RuntimeException("There are no competition with this id: " + competitionId)
+    );
+  }
+
   public Competition findByName(String name) {
     return competitionRepository.findByName(name).orElseThrow(
         () -> new RuntimeException("There are no competition with this name: " + name)

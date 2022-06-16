@@ -18,11 +18,13 @@ export default function Competitions() {
         {competitions?.map(competition => {
           return <div key={competition.competitionId}>
             <a href={localUIUrl + "/competition/" + competition.competitionId}><h1>Name: {competition.name}</h1></a>
-            <p>Date: {competition.startDate} - {competition.endDate}</p>
+            <p>Date: {competition.startDate} - {competition.finishDate}</p>
             <p>Level: {competition.level}</p>
-            <p>Type: {competition.type}</p>
-            <p>Place: {competition.place.name}</p>
-            <p>Organizer: {competition.organizer.name}</p>
+            <p>Type: {competition.gunType}</p>
+            <p>Place: {competition.place}</p>
+            <p>Organizer: {competition.organizer}</p>
+            <p>Price: {competition.price} Р.</p>
+            <p>Match Director: {competition.matchDirector}</p>
           </div>
         })}
       </div>

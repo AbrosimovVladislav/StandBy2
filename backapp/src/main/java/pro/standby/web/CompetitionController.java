@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pro.standby.model.Competition;
@@ -28,12 +29,23 @@ public class CompetitionController {
       response = List.class)
   @CrossOrigin
   @GetMapping(value = "/competition")
-  public List<CompetitionDetails> getAll() {
+  public List<CompetitionDto> getAll() {
     log.info("GET request: CompetitionController: getAll");
     List<Competition> competitions = competitionService.getAll();
-    List<CompetitionDetails> competitionDetailsList =
-        competitionMapper.competitions2DetailsList(competitions);
-    return competitionDetailsList;
+    List<CompetitionDto> competitionDtos =
+        competitionMapper.competitions2Dtos(competitions);
+    return competitionDtos;
+  }
+
+  @ApiOperation(value = "Get competition by id",
+      notes = "Get competition by id",
+      response = CompetitionDetails.class)
+  @CrossOrigin
+  @GetMapping(value = "/competition/{competitionId}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public CompetitionDetails getById(@PathVariable Long competitionId) {
+    Competition competition = competitionService.findById(competitionId);
+    CompetitionDetails competitionDetails = competitionMapper.competition2Details(competition);
+    return competitionDetails;
   }
 
   @ApiOperation(value = "Create new competition",
