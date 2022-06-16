@@ -11,6 +11,6 @@ public class CompetitionDetails {
 
   private Competition competition;
   private List<CompetitionResultOverallItem> overallResults;
-  private List<CompetitionResultStageViewItem> stageViewResults;
+  private List<CompetitionResultStageView> competitionResultStageView;
   private List<CompetitionResultCompetitorViewItem> competitorViewResults;
 }

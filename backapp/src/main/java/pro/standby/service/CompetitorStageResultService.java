@@ -31,6 +31,10 @@ public class CompetitorStageResultService {
     return competitorStageResultRepository.findByCompetitor(competitor);
   }
 
+  public List<CompetitorStageResult> findByStage(Stage stage) {
+    return competitorStageResultRepository.findByStage(stage);
+  }
+
   public List<CompetitorStageResult> findByStages(Set<Stage> stages) {
     return competitorStageResultRepository.findByStageIds(
         stages.stream().map(Stage::getStageId).toList()

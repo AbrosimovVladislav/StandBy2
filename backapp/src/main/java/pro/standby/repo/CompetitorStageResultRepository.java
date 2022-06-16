@@ -12,6 +12,7 @@ public interface CompetitorStageResultRepository extends
     JpaRepository<CompetitorStageResult, Long> {
 
   List<CompetitorStageResult> findByCompetitor(Competitor competitor);
+  List<CompetitorStageResult> findByStage(Stage stage);
 
   Optional<CompetitorStageResult> findByStageAndCompetitor(Stage stage, Competitor competitor);
 
