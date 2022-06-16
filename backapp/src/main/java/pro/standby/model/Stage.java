@@ -1,5 +1,6 @@
 package pro.standby.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -16,6 +17,7 @@ public class Stage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long stageId;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "competition_id")
     private Competition competition;
