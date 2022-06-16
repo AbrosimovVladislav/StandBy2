@@ -20,9 +20,6 @@ public class Person {
   private String firstName;
   private String lastName;
 
-  @OneToMany(mappedBy = "person")
-  private List<Contact> contacts;
-
   @Enumerated(EnumType.STRING)
   private Region region;
 

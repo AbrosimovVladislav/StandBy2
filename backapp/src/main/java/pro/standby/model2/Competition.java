@@ -28,6 +28,10 @@ public class Competition {
     @JoinColumn(name = "person_id")
     private Person matchDirector;
 
+    @ManyToOne
+    @JoinColumn(name = "referee_id")
+    private Referee referee;
+
     private String name;
     private Date startDate;
     private Date finishDate;
