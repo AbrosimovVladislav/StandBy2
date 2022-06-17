@@ -18,6 +18,7 @@ import pro.standby.model.dto.result.CompetitorViewResultItem;
 import pro.standby.model.dto.result.OverallResultItem;
 import pro.standby.model.dto.result.StageViewResult;
 import pro.standby.model.dto.result.StageViewResultItem;
+import pro.standby.service.CompetitionService;
 import pro.standby.service.CompetitorStageResultService;
 import pro.standby.service.pointCalculator.PointCalculator;
 
@@ -27,6 +28,18 @@ public class ResultCalculator {
 
   private final CompetitorStageResultService competitorStageResultService;
   private final PointCalculator pointCalculator;
+  private final CompetitionService competitionService;
+
+  public CompetitorViewResult calculateResultByCompetitionIdAndCompetitorName(Long competitionId,
+      String competitorName) {
+    Competition competition = competitionService.findById(competitionId);
+    return calculateCompetitorViewResults(competition).stream()
+        .filter(result -> result.getCompetitor().equals(competitorName))
+        .findFirst().orElseThrow(
+            () -> new RuntimeException(
+                "There is no results for " + competitorName + " in compet: " + competitionId)
+        );
+  }
 
   public List<CompetitorViewResult> calculateCompetitorViewResults(Competition competition) {
     List<CompetitorViewResult> results = new ArrayList<>();
