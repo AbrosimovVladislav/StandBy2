@@ -13,9 +13,10 @@ import pro.standby.model.Competitor;
 import pro.standby.model.CompetitorStageResult;
 import pro.standby.model.Person;
 import pro.standby.model.Squad;
-import pro.standby.model.dto.result.CompetitionResultOverallItem;
-import pro.standby.model.dto.result.CompetitionResultStageView;
-import pro.standby.model.dto.result.CompetitionResultStageViewItem;
+import pro.standby.model.dto.result.CompetitorViewResultItem;
+import pro.standby.model.dto.result.OverallResultItem;
+import pro.standby.model.dto.result.StageViewResult;
+import pro.standby.model.dto.result.StageViewResultItem;
 import pro.standby.service.CompetitorStageResultService;
 import pro.standby.service.pointCalculator.PointCalculator;
 
@@ -26,17 +27,21 @@ public class ResultCalculator {
   private final CompetitorStageResultService competitorStageResultService;
   private final PointCalculator pointCalculator;
 
-  public List<CompetitionResultStageView> calculateStageViewResults(Competition competition) {
-    List<CompetitionResultStageView> competitionResultStageViews = new ArrayList<>();
+  public List<CompetitorViewResultItem> calculateCompetitorViewResults(Competition competition) {
+    return null;
+  }
+
+  public List<StageViewResult> calculateStageViewResults(Competition competition) {
+    List<StageViewResult> competitionResultStageViews = new ArrayList<>();
 
     for (var stage : competition.getStages()) {
-      CompetitionResultStageView competitionResultStageView = CompetitionResultStageView.builder()
+      StageViewResult competitionResultStageView = StageViewResult.builder()
           .stageName(stage.getName())
           .stageNumber(stage.getNumber())
           .build();
       List<CompetitorStageResult> stageResults = competitorStageResultService.findByStage(stage);
 
-      List<CompetitionResultStageViewItem> stageViewResultItems = new ArrayList<>();
+      List<StageViewResultItem> stageViewResultItems = new ArrayList<>();
 
       for (var result : stageResults) {
         Integer points = pointCalculator.calculatePoints(
@@ -48,7 +53,7 @@ public class ResultCalculator {
         Competitor competitor = result.getCompetitor();
         Person person = competitor.getPerson();
 
-        stageViewResultItems.add(CompetitionResultStageViewItem.builder()
+        stageViewResultItems.add(StageViewResultItem.builder()
             .points(points)
             .hitFactor(hitFactor)
             .resultPoints(stage.getMaximumPoints() * hitFactor)
@@ -61,18 +66,18 @@ public class ResultCalculator {
       }
 
       stageViewResultItems = stageViewResultItems.stream()
-          .sorted(Comparator.comparing(CompetitionResultStageViewItem::getPoints).reversed())
+          .sorted(Comparator.comparing(StageViewResultItem::getPoints).reversed())
           .toList();
 
       //defining of champion
-      CompetitionResultStageViewItem championResult = stageViewResultItems.get(0);
+      StageViewResultItem championResult = stageViewResultItems.get(0);
       Integer championPoints = championResult.getPoints();
       championResult.setPercentage(100.00);
       championResult.setPlace(1);
 
       //setting places and percentages relatively to champion
       for (int i = 1; i < stageViewResultItems.size(); i++) {
-        CompetitionResultStageViewItem currentResult = stageViewResultItems.get(i);
+        StageViewResultItem currentResult = stageViewResultItems.get(i);
         currentResult.setPlace(i + 1);
         currentResult.setPercentage(100.00 * currentResult.getPoints() / championPoints);
       }
@@ -82,32 +87,32 @@ public class ResultCalculator {
     }
 
     return competitionResultStageViews.stream()
-        .sorted(Comparator.comparing(CompetitionResultStageView::getStageNumber))
+        .sorted(Comparator.comparing(StageViewResult::getStageNumber))
         .toList();
   }
 
-  public List<CompetitionResultOverallItem> calculateOverallResults(Competition competition) {
+  public List<OverallResultItem> calculateOverallResults(Competition competition) {
     //get results for each competitor
     Map<Competitor, List<CompetitorStageResult>> competitorsResults = getCompetitorsResults(
         competition);
 
     //creating list of overallResultItem per competitor
-    List<CompetitionResultOverallItem> results = competitorsResults.entrySet()
+    List<OverallResultItem> results = competitorsResults.entrySet()
         .stream()
         .map(e -> Pair.of(e.getKey(), transformResultsToPoints(e.getValue())))
         .map(this::transformCompetitorAndPointsToOverallResultItem)
-        .sorted(Comparator.comparing(CompetitionResultOverallItem::getPoints).reversed())
+        .sorted(Comparator.comparing(OverallResultItem::getPoints).reversed())
         .toList();
 
     //defining of champion
-    CompetitionResultOverallItem championResult = results.get(0);
+    OverallResultItem championResult = results.get(0);
     Double championPoints = championResult.getPoints();
     championResult.setPercentage(100.00);
     championResult.setPlace(1);
 
     //setting places and percentages relatively to champion
     for (int i = 1; i < results.size(); i++) {
-      CompetitionResultOverallItem currentResult = results.get(i);
+      OverallResultItem currentResult = results.get(i);
       currentResult.setPlace(i + 1);
       currentResult.setPercentage((currentResult.getPoints() / championPoints) * 100);
     }
@@ -126,13 +131,13 @@ public class ResultCalculator {
             competitorStageResultService::findByCompetitor));
   }
 
-  private CompetitionResultOverallItem transformCompetitorAndPointsToOverallResultItem(
+  private OverallResultItem transformCompetitorAndPointsToOverallResultItem(
       Pair<Competitor, Double> pair) {
     Competitor competitor = pair.getFirst();
     Person person = competitor.getPerson();
     String firstName = person.getFirstName();
     String lastName = person.getLastName();
-    return CompetitionResultOverallItem.builder()
+    return OverallResultItem.builder()
         .points(pair.getSecond())
         .competitor(firstName + " " + lastName)
         .rank(person.getRank().toString())
@@ -147,5 +152,4 @@ public class ResultCalculator {
         .mapToDouble(result -> result.getHitFactor() * result.getStage().getMaximumPoints())
         .sum();
   }
-
 }

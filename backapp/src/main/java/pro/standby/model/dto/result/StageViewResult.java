@@ -7,8 +7,8 @@ import java.util.List;
 
 @Data
 @Builder
-public class CompetitionResultStageView {
+public class StageViewResult {
     private String stageName;
     private Integer stageNumber;
-    private List<CompetitionResultStageViewItem> stageViewResults;
+    private List<StageViewResultItem> stageViewResults;
 }

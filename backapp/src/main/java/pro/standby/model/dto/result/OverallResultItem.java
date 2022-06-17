@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CompetitionResultOverallItem {
+public class OverallResultItem {
 
   Integer place;
   Double percentage;

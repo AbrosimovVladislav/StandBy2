@@ -43,7 +43,7 @@ export default function CompetitionDetails() {
         <button onClick={onViewSwitcherClick}>{viewSwitcher}</button>
         {viewSwitcher === 'OVERALL'
             ? <ResultTab result={currentCompetition?.overallResults} competitionId={competitionId}/>
-            : <StagesViewResult result={currentCompetition?.competitionResultStageView} competitionId={competitionId}/>}
+            : <StagesViewResult result={currentCompetition?.stageViewResults} competitionId={competitionId}/>}
       </div>
   )
 }

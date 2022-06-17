@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CompetitionResultStageViewItem {
+public class StageViewResultItem {
 
     Integer place; //-
     Double percentage; //-
