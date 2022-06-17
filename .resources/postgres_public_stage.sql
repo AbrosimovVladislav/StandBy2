@@ -1,0 +1,3 @@
+INSERT INTO public.stage (stage_id, maximum_points, maximum_shots, name, no_shoots_number, number, paper_targets_number, steel_targets_number, competition_id) VALUES (1, 50, 10, 'FirstStage', 0, 1, 4, 2, 3);
+INSERT INTO public.stage (stage_id, maximum_points, maximum_shots, name, no_shoots_number, number, paper_targets_number, steel_targets_number, competition_id) VALUES (2, 120, 24, 'SecondStage', 2, 2, 10, 4, 3);
+INSERT INTO public.stage (stage_id, maximum_points, maximum_shots, name, no_shoots_number, number, paper_targets_number, steel_targets_number, competition_id) VALUES (3, 80, 16, 'ThirdStage', 0, 3, 2, 12, 3);

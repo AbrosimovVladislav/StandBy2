@@ -1,5 +1,5 @@
-INSERT INTO public.person (person_id, first_name, last_name, region, rank) VALUES (1, 'Vitaly', 'Vasiliev', 'RUS', 'MASTER');
-INSERT INTO public.person (person_id, first_name, last_name, region, rank) VALUES (5, 'Dmitriy', 'Dmitriy', 'RUS', 'AMATEUR');
-INSERT INTO public.person (person_id, first_name, last_name, region, rank) VALUES (4, 'Mirko', 'Pipirko', 'SRB', 'AMATEUR');
-INSERT INTO public.person (person_id, first_name, last_name, region, rank) VALUES (2, 'Grenlik', 'Smahov', 'SRB', 'MASTER');
-INSERT INTO public.person (person_id, first_name, last_name, region, rank) VALUES (3, 'Stefan', 'Oskirko', 'SRB', 'MASTER');
+INSERT INTO public.person (person_id, first_name, last_name, rank, region) VALUES (1, 'Vasiliy', 'Birko', 'MASTER', 'RUS');
+INSERT INTO public.person (person_id, first_name, last_name, rank, region) VALUES (2, 'Alice', 'Valintine', 'MASTER', 'SRB');
+INSERT INTO public.person (person_id, first_name, last_name, rank, region) VALUES (3, 'Garry', 'Dotter', 'MASTER', 'SRB');
+INSERT INTO public.person (person_id, first_name, last_name, rank, region) VALUES (4, 'Valentine', 'Venediktov', 'MASTER', 'RUS');
+INSERT INTO public.person (person_id, first_name, last_name, rank, region) VALUES (5, 'Valery', 'Shulga', 'AMATEUR', 'RUS');

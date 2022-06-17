@@ -2,12 +2,17 @@ import React, {useEffect} from "react";
 import {useParams} from "react-router-dom";
 import ResultTab from "./ResultTab";
 import {useDispatch, useSelector} from "react-redux";
-import {fetchCompetitionById} from "../../redux/service/competitionSerivce";
+import {
+  fetchCompetitionById,
+  setViewSwitcherOverall,
+  setViewSwitcherStage
+} from "../../redux/service/competitionSerivce";
+import StagesViewResult from "./StagesViewResult";
 
 export default function CompetitionDetails() {
 
   const {competitionId} = useParams();
-  const {currentCompetition} = useSelector((store) => store.competitionsReducer)
+  const {currentCompetition, viewSwitcher} = useSelector((store) => store.competitionsReducer)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,6 +20,14 @@ export default function CompetitionDetails() {
       dispatch(fetchCompetitionById(competitionId));
     }
   }, [competitionId])
+
+  const onViewSwitcherClick = () => {
+    if (viewSwitcher === 'OVERALL') {
+      dispatch(setViewSwitcherStage())
+    } else {
+      dispatch(setViewSwitcherOverall())
+    }
+  }
 
   return (
       <div>
@@ -27,7 +40,10 @@ export default function CompetitionDetails() {
           <p>Place: {currentCompetition?.competition?.place}</p>
           <p>Organizer: {currentCompetition?.competition?.organizer}</p>
         </div>
-        <ResultTab result={currentCompetition?.overallResults} competitionId={competitionId}/>
+        <button onClick={onViewSwitcherClick}>{viewSwitcher}</button>
+        {viewSwitcher === 'OVERALL'
+            ? <ResultTab result={currentCompetition?.overallResults} competitionId={competitionId}/>
+            : <StagesViewResult result={currentCompetition?.competitionResultStageView}/>}
       </div>
   )
 }

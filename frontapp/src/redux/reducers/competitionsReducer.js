@@ -1,15 +1,14 @@
 import {
   PUT_COMPETITIONS,
   PUT_CURRENT_COMPETITION,
-  PUT_CURRENT_COMPETITOR,
-  PUT_CURRENT_COMPETITOR_PER_STAGE
+  SET_VIEW_SWITCHER_OVERALL,
+  SET_VIEW_SWITCHER_STAGE
 } from "../actions";
 
 const initialState = {
   competitions: [],
   currentCompetition: {},
-  currentCompetitor: {},
-  currentCompetitorPerStage:[]
+  viewSwitcher: 'OVERALL' //OVERALL, STAGE
 };
 
 export default function competitionsReducer(state = initialState, action) {
@@ -20,12 +19,10 @@ export default function competitionsReducer(state = initialState, action) {
     case PUT_CURRENT_COMPETITION :
       const currentCompetition = action.payload;
       return {...state, currentCompetition: currentCompetition};
-    case PUT_CURRENT_COMPETITOR :
-      const currentCompetitor = action.payload;
-      return {...state, currentCompetitor: currentCompetitor};
-    case PUT_CURRENT_COMPETITOR_PER_STAGE :
-      const currentCompetitorPerStage = action.payload;
-      return {...state, currentCompetitorPerStage: currentCompetitorPerStage};
+    case SET_VIEW_SWITCHER_OVERALL:
+      return {...state, viewSwitcher: 'OVERALL'};
+    case SET_VIEW_SWITCHER_STAGE:
+      return {...state, viewSwitcher: 'STAGE'};
     default :
       return state;
   }
