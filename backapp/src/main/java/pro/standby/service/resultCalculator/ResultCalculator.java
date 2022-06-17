@@ -13,6 +13,7 @@ import pro.standby.model.Competitor;
 import pro.standby.model.CompetitorStageResult;
 import pro.standby.model.Person;
 import pro.standby.model.Squad;
+import pro.standby.model.dto.result.CompetitorViewResult;
 import pro.standby.model.dto.result.CompetitorViewResultItem;
 import pro.standby.model.dto.result.OverallResultItem;
 import pro.standby.model.dto.result.StageViewResult;
@@ -27,8 +28,54 @@ public class ResultCalculator {
   private final CompetitorStageResultService competitorStageResultService;
   private final PointCalculator pointCalculator;
 
-  public List<CompetitorViewResultItem> calculateCompetitorViewResults(Competition competition) {
-    return null;
+  public List<CompetitorViewResult> calculateCompetitorViewResults(Competition competition) {
+    List<CompetitorViewResult> results = new ArrayList<>();
+    //get results for each competitor
+    Map<Competitor, List<CompetitorStageResult>> competitorsResults = getCompetitorsResults(
+        competition);
+
+    for (var entry : competitorsResults.entrySet()) {
+      //get all needed data about competitor and person
+      Competitor competitor = entry.getKey();
+      Person person = competitor.getPerson();
+      //get all needed data about results
+      var competitorResults = entry.getValue();
+
+      //create result object and set info about competitor
+      CompetitorViewResult competitorViewResult = CompetitorViewResult.builder()
+          .competitor(person.getFirstName() + " " + person.getLastName())
+          .rank(person.getRank().toString())
+          .gunType(competitor.getGunType().toString())
+          .gunClass(competitor.getGunClass().toString())
+          .region(person.getRegion().toString()).build();
+
+      List<CompetitorViewResultItem> competitorViewResults = new ArrayList<>();
+      for (var stageCompetitorResult : competitorResults) {
+        Integer points = pointCalculator.calculatePoints(
+            stageCompetitorResult.getAlphas(), stageCompetitorResult.getCharlies(),
+            stageCompetitorResult.getDeltas(), stageCompetitorResult.getMisses(),
+            stageCompetitorResult.getNoShoots(), stageCompetitorResult.getProcedurals()
+        );
+        Double hitFactor = pointCalculator.calculateResult(points, stageCompetitorResult.getTime());
+        CompetitorViewResultItem competitorViewResultItem = CompetitorViewResultItem.builder()
+            .stageNumber(stageCompetitorResult.getStage().getNumber())
+            .stageName(stageCompetitorResult.getStage().getName())
+            .points(points)
+            .hitFactor(hitFactor)
+            .resultPoints(stageCompetitorResult.getStage().getMaximumPoints() * hitFactor).build();
+
+        //ToDo не можем вытащить инфу по месту и процентам тут
+        //ToDo придумать что и как хранить тут
+        competitorViewResultItem.setPlace(null);
+        competitorViewResultItem.setPercentage(null);
+
+        competitorViewResults.add(competitorViewResultItem);
+      }
+      competitorViewResult.setCompetitorViewResults(competitorViewResults);
+      results.add(competitorViewResult);
+    }
+
+    return results;
   }
 
   public List<StageViewResult> calculateStageViewResults(Competition competition) {
