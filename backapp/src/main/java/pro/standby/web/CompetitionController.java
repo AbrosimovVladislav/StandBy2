@@ -38,28 +38,14 @@ public class CompetitionController {
     return competitionDtos;
   }
 
-  //  @ApiOperation(value = "Get result by competitionId and competitorName",
-//      notes = "Get result by competitionId and competitorName",
-//      response = CompetitorViewResult.class)
-//  @CrossOrigin
-//  @GetMapping(value = "/competition/{competitionId}/competitor/{competitorName}", produces = MediaType.APPLICATION_JSON_VALUE)
-//  public CompetitorViewResult getResultByCompetitionIdAndCompetitorName(
-//      @PathVariable Long competitionId,
-//      @PathVariable String competitorName) {
-//    CompetitorViewResult competitorViewResult = resultCalculator.calculateResultByCompetitionIdAndCompetitorName(
-//        competitionId, competitorName);
-//    return competitorViewResult;
-//  }
-//
   @ApiOperation(value = "Get competition by id",
       notes = "Get competition by id",
       response = CompetitionDetails.class)
   @CrossOrigin
   @GetMapping(value = "/competition/{competitionId}", produces = MediaType.APPLICATION_JSON_VALUE)
-  public CompetitionDetails getById(@PathVariable Long competitionId) {
+  public Competition getById(@PathVariable Long competitionId) {
     Competition competition = competitionService.findById(competitionId);
-    CompetitionDetails competitionDetails = competitionMapper.competition2Details(competition);
-    return competitionDetails;
+    return competition;
   }
 
   @ApiOperation(value = "Create new competition",

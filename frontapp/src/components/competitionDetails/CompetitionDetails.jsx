@@ -57,13 +57,13 @@ export default function CompetitionDetails() {
   return (
       <div>
         <div>
-          <h1>Name: {currentCompetition?.competition?.name}</h1>
-          <p>Date: {currentCompetition?.competition?.startDate} - {currentCompetition
-              && currentCompetition?.competition?.finishDate}</p>
-          <p>Level: {currentCompetition?.competition?.level}</p>
-          <p>Type: {currentCompetition?.competition?.gunType}</p>
-          <p>Place: {currentCompetition?.competition?.place}</p>
-          <p>Organizer: {currentCompetition?.competition?.organizer}</p>
+          <h1>Name: {currentCompetition?.name}</h1>
+          <p>Date: {currentCompetition?.startDate} - {currentCompetition
+              && currentCompetition?.finishDate}</p>
+          <p>Level: {currentCompetition?.level}</p>
+          <p>Type: {currentCompetition?.gunType}</p>
+          <p>Place: {currentCompetition?.place}</p>
+          <p>Organizer: {currentCompetition?.organizer}</p>
         </div>
         <button onClick={onOverallClick}>OVERALL</button>
         <button onClick={onStageClick}>STAGE</button>
