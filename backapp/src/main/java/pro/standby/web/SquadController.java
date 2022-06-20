@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pro.standby.model.Squad;
 import pro.standby.model.dto.SquadDto;
-import pro.standby.service.SquadService;
+import pro.standby.service.domain.SquadService;
 import pro.standby.web.mapper.SquadMapper;
 
 @Slf4j

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pro.standby.model.Competitor;
 import pro.standby.model.dto.CompetitorDto;
-import pro.standby.service.CompetitorService;
+import pro.standby.service.domain.CompetitorService;
 import pro.standby.web.mapper.CompetitorMapper;
 
 @Slf4j

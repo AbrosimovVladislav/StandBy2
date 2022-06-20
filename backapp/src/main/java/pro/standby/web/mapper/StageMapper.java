@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import pro.standby.model.Stage;
 import pro.standby.model.dto.StageDto;
-import pro.standby.service.CompetitionService;
+import pro.standby.service.domain.CompetitionService;
 import pro.standby.service.pointCalculator.PointCalculator;
 
 @Slf4j

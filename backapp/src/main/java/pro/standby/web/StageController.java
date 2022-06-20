@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pro.standby.model.Stage;
 import pro.standby.model.dto.StageDto;
-import pro.standby.service.StageService;
+import pro.standby.service.domain.StageService;
 import pro.standby.web.mapper.StageMapper;
 
 @Slf4j

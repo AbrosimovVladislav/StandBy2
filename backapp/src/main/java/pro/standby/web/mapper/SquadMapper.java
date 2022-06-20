@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import pro.standby.model.Squad;
 import pro.standby.model.dto.SquadDto;
-import pro.standby.service.CompetitionService;
+import pro.standby.service.domain.CompetitionService;
 
 @Component
 @RequiredArgsConstructor

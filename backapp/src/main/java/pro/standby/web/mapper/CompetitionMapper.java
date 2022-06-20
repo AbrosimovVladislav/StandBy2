@@ -5,8 +5,8 @@ import org.springframework.stereotype.Component;
 import pro.standby.model.Competition;
 import pro.standby.model.dto.CompetitionDto;
 import pro.standby.model.dto.result.CompetitionDetails;
-import pro.standby.service.PersonService;
-import pro.standby.service.RefereeService;
+import pro.standby.service.domain.PersonService;
+import pro.standby.service.domain.RefereeService;
 import pro.standby.service.resultCalculator.ResultCalculator;
 
 import java.util.Date;

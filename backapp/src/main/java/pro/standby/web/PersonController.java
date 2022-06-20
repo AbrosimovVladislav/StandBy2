@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pro.standby.model.Person;
-import pro.standby.service.PersonService;
+import pro.standby.service.domain.PersonService;
 
 @Slf4j
 @RestController

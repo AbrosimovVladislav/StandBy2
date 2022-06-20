@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.standby.model.Competition;
 import pro.standby.model.dto.CompetitionDto;
 import pro.standby.model.dto.result.CompetitionDetails;
-import pro.standby.service.CompetitionService;
-import pro.standby.service.resultCalculator.ResultCalculator;
+import pro.standby.service.domain.CompetitionService;
 import pro.standby.web.mapper.CompetitionMapper;
 
 @Slf4j
@@ -58,16 +57,5 @@ public class CompetitionController {
     Competition competition = competitionMapper.dto2competition(competitionDto);
     return competitionService.save(competition);
   }
-
-//  @ApiOperation(value = "Get competition by id",
-//      notes = "Get competition by id",
-//      response = Competition.class)
-//  @CrossOrigin
-//  @GetMapping(value = "/competition/{competitionId}", produces = MediaType.APPLICATION_JSON_VALUE)
-//  private Competition getById(@PathVariable Long competitionId) {
-//    Competition competition = competitionService.getById(competitionId);
-//    log.info("GET competition by id: " + competitionId);
-//    return competition;
-//  }
 
 }

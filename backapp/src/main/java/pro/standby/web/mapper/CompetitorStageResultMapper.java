@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import pro.standby.model.CompetitorStageResult;
 import pro.standby.model.dto.CompetitorStageResultDto;
-import pro.standby.service.CompetitorService;
+import pro.standby.service.domain.CompetitorService;
 import pro.standby.service.pointCalculator.PointCalculator;
-import pro.standby.service.StageService;
+import pro.standby.service.domain.StageService;
 
 @Component
 @RequiredArgsConstructor

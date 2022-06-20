@@ -1,4 +1,4 @@
-package pro.standby.service;
+package pro.standby.service.domain;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

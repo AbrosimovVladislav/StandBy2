@@ -19,6 +19,8 @@ import pro.standby.model.dto.result.CompetitorViewResultItem;
 import pro.standby.model.dto.result.OverallResultItem;
 import pro.standby.model.dto.result.StageViewResult;
 import pro.standby.model.dto.result.StageViewResultItem;
+import pro.standby.service.domain.CompetitionService;
+import pro.standby.service.domain.CompetitorStageResultService;
 import pro.standby.service.pointCalculator.PointCalculator;
 
 @Slf4j

@@ -4,7 +4,7 @@ import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import pro.standby.model.CompetitorStageResult;
-import pro.standby.service.CompetitorStageResultService;
+import pro.standby.service.domain.CompetitorStageResultService;
 
 //TODO We need a lot of validations here
 //TODO Validation for steel and paper how much A C D we can have

@@ -1,4 +1,4 @@
-package pro.standby.service;
+package pro.standby.service.domain;
 
 import java.util.List;
 import java.util.Optional;
