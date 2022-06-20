@@ -27,8 +27,7 @@ public class ResultController {
   @CrossOrigin
   @GetMapping(value = "/competition/{competitionId}/overall", produces = MediaType.APPLICATION_JSON_VALUE)
   public List<OverallResultItem> getOverallResults(@PathVariable Long competitionId) {
-    log.info("GET_OVERALL_RESULTS");
-    log.info("Id: " + competitionId);
+    log.info("GET OVERALL RESULTS for ID: " + competitionId);
     List<OverallResultItem> overallResults = resultService.getOverallResultsById(
         competitionId);
     return overallResults;
@@ -40,8 +39,7 @@ public class ResultController {
   @CrossOrigin
   @GetMapping(value = "/competition/{competitionId}/stageView", produces = MediaType.APPLICATION_JSON_VALUE)
   public List<StageViewResult> getStageViewResults(@PathVariable Long competitionId) {
-    log.info("GET_STAGE_VIEW_RESULTS");
-    log.info("Id: " + competitionId);
+    log.info("GET STAGE VIEW RESULTS for ID: " + competitionId);
     List<StageViewResult> stageViewResults = resultService.getStageViewResultsById(competitionId);
     return stageViewResults;
   }
@@ -52,8 +50,7 @@ public class ResultController {
   @CrossOrigin
   @GetMapping(value = "/competition/{competitionId}/competitor", produces = MediaType.APPLICATION_JSON_VALUE)
   public List<CompetitorViewResult> getCompetitorViewResults(@PathVariable Long competitionId) {
-    log.info("COMPETITOR");
-    log.info("Id: " + competitionId);
+    log.info("GET COMPETITOR VIEW RESULTS for ID: " + competitionId);
     List<CompetitorViewResult> competitorViewResults = resultService.getCompetitorViewResultsById(
         competitionId);
     return competitorViewResults;
