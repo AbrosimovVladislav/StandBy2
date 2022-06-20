@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.standby.model.Competition;
 import pro.standby.model.dto.CompetitionDto;
 import pro.standby.model.dto.result.CompetitionDetails;
-import pro.standby.model.dto.result.CompetitorViewResult;
 import pro.standby.service.CompetitionService;
 import pro.standby.service.resultCalculator.ResultCalculator;
 import pro.standby.web.mapper.CompetitionMapper;
@@ -25,7 +24,6 @@ public class CompetitionController {
 
   private final CompetitionService competitionService;
   private final CompetitionMapper competitionMapper;
-  private final ResultCalculator resultCalculator;
 
   @ApiOperation(value = "Get all competitions",
       notes = "Get all competitions",
@@ -40,19 +38,19 @@ public class CompetitionController {
     return competitionDtos;
   }
 
-  @ApiOperation(value = "Get result by competitionId and competitorName",
-      notes = "Get result by competitionId and competitorName",
-      response = CompetitorViewResult.class)
-  @CrossOrigin
-  @GetMapping(value = "/competition/{competitionId}/competitor/{competitorName}", produces = MediaType.APPLICATION_JSON_VALUE)
-  public CompetitorViewResult getResultByCompetitionIdAndCompetitorName(
-      @PathVariable Long competitionId,
-      @PathVariable String competitorName) {
-    CompetitorViewResult competitorViewResult = resultCalculator.calculateResultByCompetitionIdAndCompetitorName(
-        competitionId, competitorName);
-    return competitorViewResult;
-  }
-
+  //  @ApiOperation(value = "Get result by competitionId and competitorName",
+//      notes = "Get result by competitionId and competitorName",
+//      response = CompetitorViewResult.class)
+//  @CrossOrigin
+//  @GetMapping(value = "/competition/{competitionId}/competitor/{competitorName}", produces = MediaType.APPLICATION_JSON_VALUE)
+//  public CompetitorViewResult getResultByCompetitionIdAndCompetitorName(
+//      @PathVariable Long competitionId,
+//      @PathVariable String competitorName) {
+//    CompetitorViewResult competitorViewResult = resultCalculator.calculateResultByCompetitionIdAndCompetitorName(
+//        competitionId, competitorName);
+//    return competitorViewResult;
+//  }
+//
   @ApiOperation(value = "Get competition by id",
       notes = "Get competition by id",
       response = CompetitionDetails.class)

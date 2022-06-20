@@ -4,18 +4,26 @@ import OverallResult from "./OverallResult";
 import {useDispatch, useSelector} from "react-redux";
 import {
   fetchCompetitionById,
+  fetchCompetitorViewResultsByCompetitionId,
   fetchOverallResultsByCompetitionId,
   fetchStageViewResultsByCompetitionId,
+  setViewSwitcherCompetitor,
   setViewSwitcherOverall,
   setViewSwitcherStage
 } from "../../redux/service/competitionSerivce";
 import StagesViewResult from "./StagesViewResult";
+import CompetitorViewResults from "./CompetitorViewResults";
 
 export default function CompetitionDetails() {
 
   const {competitionId} = useParams();
-  const {currentCompetition, currentOverallResults, currentStageViewResults, viewSwitcher} = useSelector(
-      (store) => store.competitionsReducer)
+  const {
+    currentCompetition,
+    currentOverallResults,
+    currentStageViewResults,
+    currentCompetitorViewResults,
+    viewSwitcher
+  } = useSelector((store) => store.competitionsReducer)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,23 +33,25 @@ export default function CompetitionDetails() {
   }, [competitionId])
 
   useEffect(() => {
-    dispatch(fetchOverallResultsByCompetitionId(competitionId));
-  }, [])
-
-  useEffect(() => {
     if (viewSwitcher === 'OVERALL') {
       dispatch(fetchOverallResultsByCompetitionId(competitionId));
     } else if (viewSwitcher === 'STAGE') {
       dispatch(fetchStageViewResultsByCompetitionId(competitionId));
+    } else if (viewSwitcher === 'COMPETITOR') {
+      dispatch(fetchCompetitorViewResultsByCompetitionId(competitionId));
     }
   }, [viewSwitcher])
 
-  const onViewSwitcherClick = () => {
-    if (viewSwitcher === 'OVERALL') {
-      dispatch(setViewSwitcherStage())
-    } else {
-      dispatch(setViewSwitcherOverall())
-    }
+  const onOverallClick = () => {
+    dispatch(setViewSwitcherOverall())
+  }
+
+  const onStageClick = () => {
+    dispatch(setViewSwitcherStage())
+  }
+
+  const onCompetitorClick = () => {
+    dispatch(setViewSwitcherCompetitor())
   }
 
   return (
@@ -55,10 +65,14 @@ export default function CompetitionDetails() {
           <p>Place: {currentCompetition?.competition?.place}</p>
           <p>Organizer: {currentCompetition?.competition?.organizer}</p>
         </div>
-        <button onClick={onViewSwitcherClick}>{viewSwitcher}</button>
+        <button onClick={onOverallClick}>OVERALL</button>
+        <button onClick={onStageClick}>STAGE</button>
+        <button onClick={onCompetitorClick}>COMPETITOR</button>
         {viewSwitcher === 'OVERALL'
             ? <OverallResult result={currentOverallResults} competitionId={competitionId}/>
-            : <StagesViewResult result={currentStageViewResults} competitionId={competitionId}/>}
+            : viewSwitcher === 'STAGE'
+                ? <StagesViewResult result={currentStageViewResults} competitionId={competitionId}/>
+                : <CompetitorViewResults result={currentCompetitorViewResults} competitionId={competitionId}/>}
       </div>
   )
 }

@@ -1,9 +1,9 @@
 import {
   PUT_COMPETITIONS,
   PUT_CURRENT_COMPETITION,
-  PUT_CURRENT_COMPETITION_OVERALL_RESULTS,
-  PUT_CURRENT_COMPETITION_STAGE_VIEW_RESULTS,
-  PUT_CURRENT_COMPETITOR_PER_COMPETITION_RESULT,
+  PUT_CURRENT_COMPETITOR_VIEW_RESULTS,
+  PUT_CURRENT_OVERALL_RESULTS,
+  PUT_CURRENT_STAGE_VIEW_RESULTS, SET_VIEW_SWITCHER_COMPETITOR,
   SET_VIEW_SWITCHER_OVERALL,
   SET_VIEW_SWITCHER_STAGE
 } from "../actions";
@@ -11,11 +11,10 @@ import {
 const initialState = {
   competitions: [],
   currentCompetition: {},
-  currentOverallResults: {},
-  currentStageViewResults: {},
-  currentCompetitorViewResults: {},
-  currentCompetitorPerCompetitionResult: {},
-  viewSwitcher: 'OVERALL' //OVERALL, STAGE
+  currentOverallResults: [],
+  currentStageViewResults: [],
+  currentCompetitorViewResults: [],
+  viewSwitcher: 'OVERALL' //OVERALL, STAGE, COMPETITOR
 };
 
 export default function competitionsReducer(state = initialState, action) {
@@ -26,19 +25,23 @@ export default function competitionsReducer(state = initialState, action) {
     case PUT_CURRENT_COMPETITION :
       const currentCompetition = action.payload;
       return {...state, currentCompetition: currentCompetition};
-    case PUT_CURRENT_COMPETITION_OVERALL_RESULTS :
+
+    case PUT_CURRENT_OVERALL_RESULTS :
       const currentOverallResults = action.payload;
       return {...state, currentOverallResults: currentOverallResults};
-    case PUT_CURRENT_COMPETITION_STAGE_VIEW_RESULTS :
+    case PUT_CURRENT_STAGE_VIEW_RESULTS :
       const currentStageViewResults = action.payload;
       return {...state, currentStageViewResults: currentStageViewResults};
-    case PUT_CURRENT_COMPETITOR_PER_COMPETITION_RESULT :
-      const currentCompetitorPerCompetitionResult = action.payload;
-      return {...state, currentCompetitorPerCompetitionResult: currentCompetitorPerCompetitionResult};
+    case PUT_CURRENT_COMPETITOR_VIEW_RESULTS :
+      const currentCompetitorViewResults = action.payload;
+      return {...state, currentCompetitorViewResults: currentCompetitorViewResults};
+
     case SET_VIEW_SWITCHER_OVERALL:
       return {...state, viewSwitcher: 'OVERALL'};
     case SET_VIEW_SWITCHER_STAGE:
       return {...state, viewSwitcher: 'STAGE'};
+    case SET_VIEW_SWITCHER_COMPETITOR:
+      return {...state, viewSwitcher: 'COMPETITOR'};
     default :
       return state;
   }

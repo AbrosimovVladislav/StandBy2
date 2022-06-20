@@ -1,16 +1,8 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {localUIUrl} from "../../variables/network";
 
 export default function OverallResult({result, competitionId}) {
-
-  useEffect(() => {
-    console.log("result")
-    console.log(result)
-  },[])
-
   if (result) {
-    console.log("YES")
-    console.log(result)
     return <div>
       <h2>Results: </h2>
       <table>
@@ -42,8 +34,6 @@ export default function OverallResult({result, competitionId}) {
       </table>
     </div>
   } else {
-    console.log("NO")
-    console.log(result)
     return <h3>Results are not ready yet </h3>
   }
 }

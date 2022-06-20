@@ -54,9 +54,6 @@ public class CompetitionMapper {
     public CompetitionDetails competition2Details(Competition competition) {
         return CompetitionDetails.builder()
                 .competition(competition)
-                .overallResults(resultCalculator.calculateOverallResults(competition))
-                .stageViewResults(resultCalculator.calculateStageViewResults(competition))
-                .competitorViewResults(resultCalculator.calculateCompetitorViewResults(competition))
                 .build();
     }
 
