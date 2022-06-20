@@ -1,9 +1,11 @@
 import React, {useEffect} from "react";
 import {useParams} from "react-router-dom";
-import ResultTab from "./ResultTab";
+import OverallResult from "./OverallResult";
 import {useDispatch, useSelector} from "react-redux";
 import {
   fetchCompetitionById,
+  fetchOverallResultsByCompetitionId,
+  fetchStageViewResultsByCompetitionId,
   setViewSwitcherOverall,
   setViewSwitcherStage
 } from "../../redux/service/competitionSerivce";
@@ -12,7 +14,8 @@ import StagesViewResult from "./StagesViewResult";
 export default function CompetitionDetails() {
 
   const {competitionId} = useParams();
-  const {currentCompetition, viewSwitcher} = useSelector((store) => store.competitionsReducer)
+  const {currentCompetition, currentOverallResults, currentStageViewResults, viewSwitcher} = useSelector(
+      (store) => store.competitionsReducer)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,6 +23,18 @@ export default function CompetitionDetails() {
       dispatch(fetchCompetitionById(competitionId));
     }
   }, [competitionId])
+
+  useEffect(() => {
+    dispatch(fetchOverallResultsByCompetitionId(competitionId));
+  }, [])
+
+  useEffect(() => {
+    if (viewSwitcher === 'OVERALL') {
+      dispatch(fetchOverallResultsByCompetitionId(competitionId));
+    } else if (viewSwitcher === 'STAGE') {
+      dispatch(fetchStageViewResultsByCompetitionId(competitionId));
+    }
+  }, [viewSwitcher])
 
   const onViewSwitcherClick = () => {
     if (viewSwitcher === 'OVERALL') {
@@ -42,8 +57,8 @@ export default function CompetitionDetails() {
         </div>
         <button onClick={onViewSwitcherClick}>{viewSwitcher}</button>
         {viewSwitcher === 'OVERALL'
-            ? <ResultTab result={currentCompetition?.overallResults} competitionId={competitionId}/>
-            : <StagesViewResult result={currentCompetition?.stageViewResults} competitionId={competitionId}/>}
+            ? <OverallResult result={currentOverallResults} competitionId={competitionId}/>
+            : <StagesViewResult result={currentStageViewResults} competitionId={competitionId}/>}
       </div>
   )
 }
