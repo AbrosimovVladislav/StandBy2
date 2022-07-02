@@ -44,7 +44,7 @@ public class CompetitionMapper {
         .referee(competition.getReferee().getPerson().getFirstName() + " "
             + competition.getReferee().getPerson().getLastName())
         .matchDirector(competition.getMatchDirector().getFirstName() + " "
-            + competition.getMatchDirector().getFirstName())
+            + competition.getMatchDirector().getLastName())
         .build();
   }
 

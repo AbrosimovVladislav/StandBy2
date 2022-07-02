@@ -4,22 +4,21 @@ import {localUIUrl} from "../../variables/network";
 export default function StagesViewResult({result, competitionId}) {
   if (result) {
     return <div>
-      <h2>Results: </h2>
       {result?.map(stageInfo => {
         return <div key={Math.random()}>
-          <h3>Stage: {stageInfo.stageNumber} {stageInfo.stageName}</h3>
+          <h3>{stageInfo.stageNumber}) {stageInfo.stageName}</h3>
           <table>
             <tr>
-              <th>Place</th>
-              <th>Percentage</th>
-              <th>Points</th>
-              <th>HitFactor</th>
-              <th>ResultPoints</th>
-              <th>Competitor</th>
-              <th>Rank</th>
-              <th>GunType</th>
-              <th>GunClass</th>
-              <th>Region</th>
+              <th>Место</th>
+              <th>Процент</th>
+              <th>Очки</th>
+              <th>ХитФактор</th>
+              <th>Итоговые очки</th>
+              <th>Стрелок</th>
+              <th>Ранг</th>
+              <th>Оружие</th>
+              <th>Класс</th>
+              <th>Регион</th>
             </tr>
             {stageInfo?.stageViewResults?.map(stageResult => {
               return <tr key={Math.random()}>

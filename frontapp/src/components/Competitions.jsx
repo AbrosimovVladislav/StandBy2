@@ -17,14 +17,15 @@ export default function Competitions() {
         Competitions
         {competitions?.map(competition => {
           return <div key={competition.competitionId}>
-            <a href={localUIUrl + "/competition/" + competition.competitionId}><h1>Name: {competition.name}</h1></a>
-            <p>Date: {competition.startDate} - {competition.finishDate}</p>
-            <p>Level: {competition.level}</p>
-            <p>Type: {competition.gunType}</p>
-            <p>Place: {competition.place}</p>
-            <p>Organizer: {competition.organizer}</p>
-            <p>Price: {competition.price} Р.</p>
-            <p>Match Director: {competition.matchDirector}</p>
+            <a href={localUIUrl + "/competition/" + competition.competitionId}><h1>{competition.name}</h1></a>
+            {/*<p>Date: {competition.startDate} - {competition.finishDate}</p>*/}
+            <p>Дата: 29.07.2022 - 30.07.2022</p>
+            <p>Уровень: {competition.level}</p>
+            <p>Класс: {competition.gunType}</p>
+            <p>Место: {competition.place}</p>
+            <p>Организатор: {competition.organizer}</p>
+            <p>Входной билет: {competition.price} Р.</p>
+            <p>Директор Матча: {competition.matchDirector}</p>
           </div>
         })}
       </div>

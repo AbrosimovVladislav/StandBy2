@@ -57,17 +57,17 @@ export default function CompetitionDetails() {
   return (
       <div>
         <div>
-          <h1>Name: {currentCompetition?.name}</h1>
-          <p>Date: {currentCompetition?.startDate} - {currentCompetition
-              && currentCompetition?.finishDate}</p>
-          <p>Level: {currentCompetition?.level}</p>
-          <p>Type: {currentCompetition?.gunType}</p>
-          <p>Place: {currentCompetition?.place}</p>
-          <p>Organizer: {currentCompetition?.organizer}</p>
+          <h1>{currentCompetition?.name}</h1>
+          <p>Дата: 29.07.2022 - 30.07.2022</p>
+          <p>Уровень: {currentCompetition?.level}</p>
+          <p>Класс: {currentCompetition?.gunType}</p>
+          <p>Место: {currentCompetition?.place}</p>
+          <p>Организатор: {currentCompetition?.organizer}</p>
         </div>
+        <h2>Результаты</h2>
         <button onClick={onOverallClick}>OVERALL</button>
-        <button onClick={onStageClick}>STAGE</button>
-        <button onClick={onCompetitorClick}>COMPETITOR</button>
+        <button onClick={onStageClick}>BY STAGE</button>
+        <button onClick={onCompetitorClick}>BY COMPETITOR</button>
         {viewSwitcher === 'OVERALL'
             ? <OverallResult result={currentOverallResults} competitionId={competitionId}/>
             : viewSwitcher === 'STAGE'

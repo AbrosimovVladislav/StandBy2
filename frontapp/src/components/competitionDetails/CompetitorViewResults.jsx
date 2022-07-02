@@ -6,18 +6,18 @@ export default function CompetitorViewResults({result}) {
     {
       result?.map(result => {
         return <div>
-          <h1>Name: {result?.competitor}</h1>
-          <p>Rank: {result?.rank}</p>
-          <p>GunType: {result?.gunType}</p>
-          <p>GunClass: {result?.gunClass}</p>
-          <p>Region: {result?.region}</p>
+          <h1>{result?.competitor}</h1>
+          <p>Ранг: {result?.rank}</p>
+          <p>Оружие: {result?.gunType}</p>
+          <p>Класс: {result?.gunClass}</p>
+          <p>Регион: {result?.region}</p>
           <table>
             <tr>
-              <th>StageNumber</th>
-              <th>StageName</th>
-              <th>Points</th>
-              <th>HitFactor</th>
-              <th>ResultPoints</th>
+              <th>N</th>
+              <th>Упражнение</th>
+              <th>Очки</th>
+              <th>ХитФактор</th>
+              <th>Итоговые очки</th>
             </tr>
             {
               result?.competitorViewResults?.map(res => {

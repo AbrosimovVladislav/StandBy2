@@ -4,17 +4,16 @@ import {localUIUrl} from "../../variables/network";
 export default function OverallResult({result, competitionId}) {
   if (result) {
     return <div>
-      <h2>Results: </h2>
       <table>
         <tr>
-          <th>Place</th>
-          <th>Percentage</th>
-          <th>Points</th>
-          <th>Competitor</th>
-          <th>Rank</th>
-          <th>Type</th>
-          <th>Class</th>
-          <th>Region</th>
+          <th>Место</th>
+          <th>Процент</th>
+          <th>Очки</th>
+          <th>Стрелок</th>
+          <th>Ранг</th>
+          <th>Оружие</th>
+          <th>Класс</th>
+          <th>Регион</th>
         </tr>
         {result?.map(resultItem => {
           return <tr>
